@@ -1,11 +1,11 @@
 function [selctedDistance, dist, fr] = getBorderScore(posx, posy, spiketrain, boxSize)
 edgePosx = boxSize(1) - posx;
 edgePosy = boxSize(2) - posy;
-distance = linspace(0.5, 6, 12);
+distance = 0.1:0.1:10;
 selctedDistance = 6;
 dist = [];
 fr = [];
-for i = 1:12
+for i = 1:length(distance)
     borderInd = find(posx < distance(i) | posy < distance(i) | edgePosx < distance(i) | edgePosy < distance(i));
     borderInd = unique(borderInd);
     nonBorderInd = setdiff(1: numel(posx),borderInd);
