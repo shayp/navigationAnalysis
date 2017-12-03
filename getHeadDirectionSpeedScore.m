@@ -15,6 +15,12 @@ function [slowHDScore, fastHDScore] = getHeadDirectionSpeedScore(posx, posy, hea
     fastHD = headDirection(fastInd);
     slowHD = headDirection(slowInd);
     
-    slowHDScore = corr2(slowSpikeTrain,slowHD);
-    fastHDScore = corr2(fastSpikeTrain, fastHD);
+    slowHDScore = abs(corr2(slowSpikeTrain,slowHD));
+    fastHDScore = abs(corr2(fastSpikeTrain, fastHD));
+    if isnan(slowHDScore)
+        slowHDScore = 0;
+    end
+    if isnan(fastHDScore)
+        fastHDScore = 0;
+    end
 end

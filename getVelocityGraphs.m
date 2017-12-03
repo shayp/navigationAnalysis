@@ -1,10 +1,8 @@
-function [hdTuningFast, hdTuningSlow, bins, timeSpentFast, timeSpentSlow]  = getVelocityGraphs(posx, posy, headDirection, spiketrain, dt, threshold)
+function [hdTuningFast, hdTuningSlow, timeSpentFast, timeSpentSlow]  = getVelocityGraphs(posx, posy, headDirection, spiketrain, dt, threshold, bins)
     % add the extra just to make the vectors the same size
     velx = diff([posx(1); posx]);
     vely = diff([posy(1); posy]); 
-    bins = 8;
-    velx = velx;
-    vely = vely;
+
     speed = sqrt(velx.^2+vely.^2) / dt; 
     hdTuningSlow = zeros(bins, 1);
     hdTuningFast = zeros(bins, 1);

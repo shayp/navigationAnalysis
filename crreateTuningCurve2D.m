@@ -11,9 +11,6 @@ tuning_curve = zeros(numYBins, numXBins);
 hit_tuning_curve = zeros(numYBins, numXBins);
 
 for i  = 1:length(posx)
-%     % figure out the position index
-%     [~, xcoor] = min(abs(posx(i)-xAxis));
-%     [~, ycoor] = min(abs(posy(i)-yAxis));
     xInd = round(posx(i) / 2);
     yInd = round(posy(i) / 2);
     if xInd < 1

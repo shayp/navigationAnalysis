@@ -3,6 +3,7 @@ edgePosx = boxSize(1) - posx;
 edgePosy = boxSize(2) - posy;
 distance = 0.1:0.1:10;
 selctedDistance = 6;
+fIsDistanceSet = 0;
 dist = [];
 fr = [];
 for i = 1:length(distance)
@@ -22,9 +23,9 @@ for i = 1:length(distance)
 
     dist = [dist distance(i)];
     fr = [fr borderFiringRatio];
-    if borderSpikeCount > 0.75 *  TotalSpikeCount
+    if borderSpikeCount > 0.75 *  TotalSpikeCount && fIsDistanceSet == 0
         selctedDistance = distance(i);
-        return
+        fIsDistanceSet =  1;
     end
 end
 
